@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #6495ed;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+    segoe ui emoji, segoe ui symbol, noto color emoji;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
