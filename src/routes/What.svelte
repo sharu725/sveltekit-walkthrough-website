@@ -1,5 +1,6 @@
 <script>
   import Button from "$lib/Button.svelte";
+  import Contact from "./Contact.svelte";
 </script>
 
 <div class="container grid">
@@ -17,16 +18,11 @@
       commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.
     </p>
 
-    <Button class="secondary" id="a-button" size="medium">Call To Action >></Button>
+    <Button class="secondary" id="a-button" size="medium"
+      >Call To Action >></Button
+    >
   </div>
-  <div class="contact">
-    <h3>Contact Us</h3>
-    <p><strong>Start Bootstrap</strong></p>
-    <p>3481 Melrose Place</p>
-    <p>Beverly Hills, CA 90210</p>
-    <p>P: (123) 456-7890</p>
-    <p>E:<a href="mailto:name@example.com">name@example.com</a></p>
-  </div>
+  <Contact />
 </div>
 
 <style>
@@ -38,9 +34,7 @@
   .what {
     grid-column: span 8;
   }
-  .contact {
-    grid-column: span 4;
-  }
+
   h3 {
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
@@ -48,11 +42,5 @@
     font-weight: 500;
     border-bottom: 1px solid #ddd;
   }
-  a {
-    text-decoration: none;
-    color: var(--primary-color);
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+
 </style>

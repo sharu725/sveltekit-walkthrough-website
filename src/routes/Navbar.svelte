@@ -25,7 +25,9 @@
 
 <nav>
   <div class="container">
-    <h1>Start Bootstrap</h1>
+    <a class="logo" href="/">
+      <h1>Start Bootstrap</h1>
+    </a>
     <ul>
       {#each navs as { title, href }}
         <li>
@@ -66,6 +68,9 @@
   a {
     text-decoration: none;
     color: #aaa;
+  }
+  .logo {
+    color: white;
   }
   .active {
     color: white;

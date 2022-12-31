@@ -8,6 +8,7 @@
 
 <style>
   footer {
+    margin-top: 3em;
     padding: 3em 0;
     background-color: #343a40;
     color: white;
