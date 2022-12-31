@@ -1,5 +1,5 @@
 <script>
-  import { enhance } from "$app/forms";
+  import { enhance, applyAction } from "$app/forms";
   import Button from "$lib/Button.svelte";
 
   export let form;
@@ -12,7 +12,14 @@
   {#if form?.success}
     <p class="success">{form?.status || ""}</p>
   {:else}
-    <form method="POST" use:enhance>
+    <form
+      method="POST"
+      use:enhance={() => {
+        return async ({ result }) => {
+          await applyAction(result);
+        };
+      }}
+    >
       <div class="form-group">
         <label class="col-md-3 control-label" for="name">Name</label>
         <div class="col-md-9">
@@ -23,8 +30,11 @@
             placeholder="Your name"
             class="form-control"
             value={form?.name || ""}
-            class:error={form && !form?.name}
+            class:error={form?.errors?.name}
           />
+          {#if form?.errors?.name}
+            <p class="red">{form?.errors?.name}</p>
+          {/if}
         </div>
       </div>
 
@@ -38,8 +48,11 @@
             placeholder="Your email"
             class="form-control"
             value={form?.email || ""}
-            class:error={form && !form?.email}
+            class:error={form?.errors?.email}
           />
+          {#if form?.errors?.email}
+            <p class="red">{form?.errors?.email}</p>
+          {/if}
         </div>
       </div>
 
@@ -53,8 +66,11 @@
             placeholder="Please enter your message here..."
             rows="5"
             value={form?.message || ""}
-            class:error={form && !form?.message}
+            class:error={form?.errors?.message}
           />
+          {#if form?.errors?.message}
+            <p class="red">{form?.errors?.message}</p>
+          {/if}
         </div>
       </div>
 
@@ -94,5 +110,8 @@
   }
   .error {
     border: 1px solid red;
+  }
+  .red {
+    color: red;
   }
 </style>
