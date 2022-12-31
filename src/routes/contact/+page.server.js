@@ -19,7 +19,11 @@ export const actions = {
         { name, email, message },
         { abortEarly: false }
       );
-      console.log({ result });
+
+      const prefilledLink = `https://docs.google.com/forms/d/e/1FAIpQLSeOGNYx08uzHGf3HASA_CDn6z6adFT4_N0w6OvZduCBxMRfEw/formResponse?usp=pp_url&entry.190919771=${name}&entry.543063817=${email}&entry.2120037074=${message}&submit=Submit`;
+
+      const res = await fetch(prefilledLink);
+
       return {
         success: true,
         status: "Form is submitted",
