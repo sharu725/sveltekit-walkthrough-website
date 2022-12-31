@@ -1,4 +1,5 @@
 import { fail } from "@sveltejs/kit";
+import { object, string, number, date, InferType } from "yup";
 
 export const actions = {
   default: async ({ request }) => {
@@ -7,20 +8,34 @@ export const actions = {
     const email = formData.get("email");
     const message = formData.get("message");
 
-    // do something with the data
-    if (!name) {
-      return fail(400, { error: "name is missing", email, message });
-    }
-    if (!email) {
-      return fail(400, { error: "email is missing", name, message });
-    }
-    if (!message) {
-      return fail(400, { error: "message is missing", email, name });
-    }
+    const contactFormSchema = object({
+      name: string().min(2, "too short").required("We only accept named users"),
+      email: string().required().email(),
+      message: string().required(),
+    });
 
-    return {
-      success: true,
-      status: "Form is submitted",
-    };
+    try {
+      const result = await contactFormSchema.validate(
+        { name, email, message },
+        { abortEarly: false }
+      );
+      console.log({ result });
+      return {
+        success: true,
+        status: "Form is submitted",
+      };
+    } catch (error) {
+      console.log({ error });
+      const errors = error.inner.reduce((acc, err) => {
+        return { ...acc, [err.path]: err.message };
+      }, {});
+
+      return {
+        errors,
+        name,
+        email,
+        message,
+      };
+    }
   },
 };
