@@ -4,6 +4,8 @@
   export let title;
   export let description;
   export let type;
+
+  $: url = $page.url.href;
 </script>
 
 <svelte:head>
@@ -15,7 +17,7 @@
     "@type": "${type}",
       "name": "${title}",
       "description": "${description}",
-      "url": "${$page.url.href}",
+      "url": "${url}",
     }
   </script>`}
 </svelte:head>
