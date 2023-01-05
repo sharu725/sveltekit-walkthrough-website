@@ -1,3 +1,7 @@
+<script>
+  import Seo from "$lib/Seo.svelte";
+</script>
+
 <div class="container">
   <h3>Full length services page</h3>
   <p>
@@ -69,6 +73,11 @@
     faucibus ultrices varius.
   </p>
 </div>
+<Seo
+  title="Services | Business Frontpage"
+  description="This is service page"
+  type="WebPage"
+/>
 
 <style>
   h3 {

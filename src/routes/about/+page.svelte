@@ -1,4 +1,5 @@
 <script>
+  import Seo from "$lib/Seo.svelte";
   import Contact from "../Contact.svelte";
 </script>
 
@@ -64,3 +65,4 @@
     border-bottom: 1px solid #ddd;
   }
 </style>
+<Seo title="About | Business Frontpage" description="This is about page" type="WebPage" />

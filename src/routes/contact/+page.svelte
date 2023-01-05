@@ -1,6 +1,7 @@
 <script>
   import { enhance, applyAction } from "$app/forms";
   import Button from "$lib/Button.svelte";
+  import Seo from "$lib/Seo.svelte";
 
   export let form;
 
@@ -82,6 +83,11 @@
     </form>
   {/if}
 </div>
+<Seo
+  title="Contact | Business Frontpage"
+  description="This is contact page"
+  type="WebPage"
+/>
 
 <style>
   .container {

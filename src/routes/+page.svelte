@@ -1,4 +1,5 @@
 <script>
+  import Seo from "$lib/Seo.svelte";
   import What from "./What.svelte";
 
   export let data;
@@ -6,9 +7,7 @@
   const { posts } = data;
 </script>
 
-
 <What />
-
 
 <div class="container">
   <div class="grid">
@@ -20,6 +19,9 @@
     {/each}
   </div>
 </div>
+
+<Seo title="Business Frontpage" description="This is homepage" type="WebSite" />
+
 <style>
   .grid {
     display: grid;
