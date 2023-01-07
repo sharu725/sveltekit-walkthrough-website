@@ -1,6 +1,6 @@
-export const load = async () => {
+export const load = async ({ fetch }) => {
   const getPosts = async () => {
-    const res = await fetch("http://localhost:5173/api/posts.json");
+    const res = await fetch("/api/posts.json");
     const data = await res.json();
     return data;
   };
