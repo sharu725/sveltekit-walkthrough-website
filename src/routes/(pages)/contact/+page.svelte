@@ -5,7 +5,6 @@
 
   export let form;
 
-  $: console.log(form);
 </script>
 
 <div class="container">
@@ -91,6 +90,7 @@
 
 <style>
   .container {
+    width: 100%;
     padding: 2em 0;
   }
   h2 {

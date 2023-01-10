@@ -1,6 +1,6 @@
 <script>
   import Seo from "$lib/Seo.svelte";
-  import What from "./What.svelte";
+  import What from "$lib/What.svelte";
 
   export let data;
 

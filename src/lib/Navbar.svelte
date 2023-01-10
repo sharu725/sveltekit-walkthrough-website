@@ -25,7 +25,7 @@
   ];
 
   $: url = $page.url.href;
-  $: routeId = $page.route.id;
+  $: routeId = $page.url.pathname;
 </script>
 
 <nav>

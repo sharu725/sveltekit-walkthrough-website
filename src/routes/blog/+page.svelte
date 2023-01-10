@@ -1,4 +1,7 @@
 <script>
+  import Seo from "$lib/Seo.svelte";
+
+
   export let data;
 
   const { posts } = data;
@@ -13,3 +16,5 @@
     </a>
   {/each}
 </div>
+
+<Seo title="Blog | Business Frontpage" description="This is blog" type="WebPage" />

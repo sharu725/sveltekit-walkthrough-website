@@ -1,6 +1,6 @@
 <script>
   import Seo from "$lib/Seo.svelte";
-  import Contact from "../Contact.svelte";
+  import Contact from "$lib/Contact.svelte";
 </script>
 
 <div class="container grid">
