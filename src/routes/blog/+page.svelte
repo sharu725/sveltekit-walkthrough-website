@@ -1,7 +1,6 @@
 <script>
   import Seo from "$lib/Seo.svelte";
 
-
   export let data;
 
   const { posts } = data;
@@ -17,4 +16,18 @@
   {/each}
 </div>
 
-<Seo title="Blog | Business Frontpage" description="This is blog" type="WebPage" />
+<Seo
+  title="Blog | Business Frontpage"
+  description="This is blog"
+  type="WebPage"
+/>
+
+<style>
+  a {
+    text-decoration: underline;
+    color: var(--color);
+  }
+  a:hover {
+    color: var(--primary-color);
+  }
+</style>
