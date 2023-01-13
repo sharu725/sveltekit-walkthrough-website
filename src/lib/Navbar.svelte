@@ -1,5 +1,8 @@
 <script>
   import { page } from "$app/stores";
+  import { onMount } from "svelte";
+  import Moon from "./icons/moon.svelte";
+  import Sun from "./icons/sun.svelte";
 
   const navs = [
     {
@@ -24,9 +27,16 @@
     },
   ];
 
+  let currentTheme = "";
+
+  onMount(() => {
+    currentTheme = document.documentElement.dataset.theme;
+  });
+
   const setTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     document.cookie = `siteTheme=${theme};max-age=31536000;path="/"`;
+    currentTheme = theme;
   };
 
   $: url = $page.url.href;
@@ -48,11 +58,16 @@
           >
         </li>
       {/each}
-      <li>
-        <a href={"#"} on:click={() => setTheme("dark")}>Dark</a>
-      </li>
-      <li>
-        <a href={"#"} on:click={() => setTheme("light")}>Light</a>
+      <li class="relative">
+        {#if currentTheme == "light"}
+          <a class="moon" href={"#"} on:click={() => setTheme("dark")}>
+            <Moon />
+          </a>
+        {:else}
+          <a class="sun" href={"#"} on:click={() => setTheme("light")}>
+            <Sun />
+          </a>
+        {/if}
       </li>
     </ul>
   </div>
