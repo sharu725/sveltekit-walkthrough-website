@@ -30,7 +30,17 @@
   let currentTheme = "";
 
   onMount(() => {
-    currentTheme = document.documentElement.dataset.theme;
+    // currentTheme = document.documentElement.dataset.theme;
+    const userPrefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    const hasUserSetDarkModeManually =
+      document.documentElement.dataset.theme == "dark";
+
+    if (!hasUserSetDarkModeManually) {
+      setTheme(userPrefersDarkMode ? "dark" : "light");
+    }
   });
 
   const setTheme = (theme) => {
