@@ -1,4 +1,6 @@
 <script>
+  import { applyAction, enhance } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
   import { page } from "$app/stores";
   import { onMount } from "svelte";
   import Moon from "./icons/moon.svelte";
@@ -68,16 +70,21 @@
           >
         </li>
       {/each}
+
       <li class="relative">
-        {#if currentTheme == "light"}
-          <a class="moon" href={"#"} on:click={() => setTheme("dark")}>
+        <form method="GET" data-sveltekit-reload>
+          <input type="hidden" name="theme" value="dark" />
+          <button class="moon" type="submit">
             <Moon />
-          </a>
-        {:else}
-          <a class="sun" href={"#"} on:click={() => setTheme("light")}>
+          </button>
+        </form>
+
+        <form method="GET" data-sveltekit-reload>
+          <input type="hidden" name="theme" value="light" />
+          <button class="sun" type="submit">
             <Sun />
-          </a>
-        {/if}
+          </button>
+        </form>
       </li>
     </ul>
   </div>
@@ -119,5 +126,13 @@
   }
   .active {
     color: white;
+  }
+  .sun,
+  .moon {
+    cursor: pointer;
+    color: #aaa;
+    background: none;
+    border: none;
+    padding: 0;
   }
 </style>

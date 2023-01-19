@@ -9,3 +9,7 @@ export const load = async ({ fetch }) => {
     posts: getPosts(),
   };
 };
+/** @type {import('./$types').Actions} */
+export const actions = {
+  default: async () => {},
+};
