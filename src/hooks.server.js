@@ -2,8 +2,9 @@ import { redirect } from "@sveltejs/kit";
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {
-  
-  if (event.route.id?.startsWith("/(app)")) {
+  const access = event.cookies.get("access") === "true";
+
+  if (!access && event.route.id?.startsWith("/(app)")) {
     throw redirect(302, "/login");
   }
 
